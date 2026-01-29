@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import emailRegisterTemplate from './emailRegisterTemplate.js';
  
 const emailRegistro = async (datos) => {
     const {email, nombre, token} = datos;
@@ -18,14 +19,7 @@ const emailRegistro = async (datos) => {
         to: email, // list of receivers
         subject: "APV - Comprueba tu cuenta ✔", // Subject line
         text: "Comprueba tu cuenta APV", // plain text body
-        html: ` <p> Hola <strong>${nombre}</strong> <br /> Comprueba tu cuenta</p>
-        <p>Hace falta solo un paso para confirmar tu cuenta, haz click en el siguiente enlace: 
-        <a href='${process.env.FRONTEND_URL}/confirmar/${token}'>Comprobar Cuenta</a>
-        </p>
-        
-        <p>Si no creaste esta cuenta puedes eliminar este mensaje</p>
- 
-        `, // html body
+        html: emailRegisterTemplate({nombre, token, frontendUrl: process.env.FRONTEND_URL}),
       });
  
     console.log('Mensaje enviado: %s', info.messageId);
