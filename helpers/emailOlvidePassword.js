@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import emailOlvidePasswordTemplate from './emailOlvidePasswordTemplate.js';
  
 const emailOlvidePassword = async (datos) => {
     const {email, nombre, token} = datos;
@@ -12,21 +13,13 @@ const emailOlvidePassword = async (datos) => {
         }
       });   
  
-    // Enviar email
     const info = await transport.sendMail({
-        from: '"APV - Administrador Pacientes Veterinaria" <apv@correo.com>', // sender address
-        to: email, // list of receivers
-        subject: "Reestablece tu Password", // Subject line
-        text: "Reestablece tu Password", // plain text body
-        html: ` <p> Hola <strong>${nombre}</strong> <br /> Has solicitado Reestablecer tu Password</p>
-        <p>Sigue el siguiente enlace para generar un nuevo Password: 
-        <a href='${process.env.FRONTEND_URL}/olvide-password/${token}'>Reestablecer Password</a>
-        </p>
-        
-        <p>Si no creaste esta cuenta puedes eliminar este mensaje</p>
- 
-        `, // html body
-      });
+        from: '"APV - Administrador Pacientes Veterinaria" <apv@correo.com>', 
+        to: email, 
+        subject: "Reestablece tu Password", 
+        text: "Reestablece tu Password", 
+        html: emailOlvidePasswordTemplate({nombre, token, frontendUrl: process.env.FRONTEND_URL}),
+       });
  
     console.log('Mensaje enviado: %s', info.messageId);
 };

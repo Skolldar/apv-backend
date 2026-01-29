@@ -13,12 +13,11 @@ const emailRegistro = async (datos) => {
         }
       });   
  
-    // Enviar email
     const info = await transport.sendMail({
-        from: '"APV - Administrador Pacientes Veterinaria" <apv@correo.com>', // sender address
-        to: email, // list of receivers
-        subject: "APV - Comprueba tu cuenta ✔", // Subject line
-        text: "Comprueba tu cuenta APV", // plain text body
+        from: '"APV - Administrador Pacientes Veterinaria" <apv@correo.com>', 
+        to: email, 
+        subject: "APV - Comprueba tu cuenta ✔",
+        text: "Comprueba tu cuenta APV", 
         html: emailRegisterTemplate({nombre, token, frontendUrl: process.env.FRONTEND_URL}),
       });
  
