@@ -18,11 +18,11 @@ const emailRegisterTemplate = ({ nombre, token, frontendUrl }) => `
     <!-- Poppins font from Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap' rel='stylesheet' type='text/css'>
     <div class="email-container" style="backdrop-filter: blur(12px);background: rgba(255,255,255,0.7);max-width:480px;margin:0 auto;border-radius:18px;box-shadow:0 2px 16px rgba(0,0,0,0.12);padding:40px 32px;text-align:center;color:#111;font-family:'Poppins',Arial,sans-serif;">
-      <h2 class="email-title">Veterinary Administrator</h2>
-      <p class="email-text" style="font-size:18px;color:#111;margin-bottom:24px;">Hello, <strong>${nombre}</strong>!<br>Your Veterinary Administrator account is almost ready.</p>
-      <p class="email-text" style="font-size:16px;color:#111;margin-bottom:32px;">Please confirm your account by clicking the button below:</p>
-      <a class="email-cta" href="${frontendUrl}/admin/confirm/${token}">Check Account</a>
-      <p style="font-size:13px;color:#222;margin-top:32px;">If you did not create this account, you can ignore this message.</p>
+      <h2 class="email-title">Administrador de Veterinario</h2>
+      <p class="email-text" style="font-size:18px;color:#111;margin-bottom:24px;">Hola, <strong>${nombre}</strong>!<br>Tu cuenta de Administrador de Veterinario está casi lista.</p>
+      <p class="email-text" style="font-size:16px;color:#111;margin-bottom:32px;">Por favor confirma tu cuenta haciendo clic en el botón de abajo:</p>
+        <a class="email-cta" href="${frontendUrl}/confirmar/${token}">Confirmar la Cuenta</a>
+      <p style="font-size:13px;color:#222;margin-top:32px;">Si no creaste esta cuenta, puedes ignorar este mensaje.</p>
     </div>
   </div>
 `;
